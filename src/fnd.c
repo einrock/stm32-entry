@@ -21,9 +21,9 @@ void fnd_display_number(int pos, int value)
 	//2
 	GPIOB->ODR = GPIOB->ODR & ~ (0xF << 12);
 
-  //3
-  GPIOC->ODR = GPIOC->ODR | table[value];	
-	
+	//3
+	GPIOC->ODR = GPIOC->ODR | table[value];	
+
 	//4
 	GPIOB->ODR = GPIOB->ODR | (0x1 << (12 + pos)); 	
 }

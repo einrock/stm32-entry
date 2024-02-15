@@ -53,10 +53,10 @@ int main()
 	led_off_all();	
 
 	uint32_t k = 0;
-  while (1)
-  {
+	while (1)
+	{
 		/*
-	 	 *
+		 *
 		 */
 		if (key_is_pressed(KEY_LEFT))
 		{
@@ -116,7 +116,7 @@ int main()
 		}
 		
 		k = k + 1;		
-  }
+	}
 	
 	return 0;
 }
