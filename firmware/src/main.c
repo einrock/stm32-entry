@@ -9,23 +9,35 @@
 
 static unsigned int gTickCount;
 
+/*
+ * interrupt service handler for exti-0 (pb0), up key
+ */
 void EXTI0_IRQHandler(void)
 {
 	EXTI->PR = (0x1 << 0);	
 	printf("%s \r\n", __func__);
 }
 
+/*
+ * interrupt service handler for exti-1 (pb1), down key
+ */
 void EXTI1_IRQHandler(void)
 {
 	EXTI->PR = (0x1 << 1);
 	printf("%s \r\n", __func__);
 }
 
+/*
+ * system timer interrupt handler
+ */
 void SysTick_Handler(void)
 {
 	gTickCount = gTickCount + 1;
 }
 
+/*
+ * 
+ */
 void delay(uint32_t msec)
 {
 	uint32_t next_tick = gTickCount + msec;
@@ -34,12 +46,18 @@ void delay(uint32_t msec)
 	}
 }
 
+/*
+ * 
+ */
 void systick_init()
 {
 	*(unsigned int *)0xE000E010 = 0x7;
 	*(unsigned int *)0xE000E014 = 72000 - 1;
 }
 
+/*
+ * 
+ */
 int main()
 {
 	systick_init();
@@ -83,7 +101,7 @@ int main()
 		}		
 		
 		/*
-		 *
+		 * 
 		 */
 		uint32_t tick;
 		uint32_t a0, a1, a2, a3;
@@ -105,7 +123,6 @@ int main()
 
 		fnd_display_number(3, a3);
 		delay(5);
-		
 		
 		/*
 		 *
