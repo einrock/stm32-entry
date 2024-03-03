@@ -47,7 +47,7 @@ void delay(uint32_t msec)
 }
 
 /*
- * 
+ * systick initialization (enable interrupt every 1msec) 
  */
 void systick_init()
 {
@@ -74,7 +74,7 @@ int main()
 	while (1)
 	{
 		/*
-		 *
+		 * check if one of LEFT, CENTER, RIGHT keys is pressed or not
 		 */
 		if (key_is_pressed(KEY_LEFT))
 		{
@@ -90,7 +90,7 @@ int main()
 		}
 
 		/*
-		 *
+		 * turn on the LEDs one by one in order
 		 */
 		if ((k%5)==0)
 		{
@@ -101,7 +101,7 @@ int main()
 		}		
 		
 		/*
-		 * 
+		 * perform stop watch using FND module
 		 */
 		uint32_t tick;
 		uint32_t a0, a1, a2, a3;
@@ -125,7 +125,7 @@ int main()
 		delay(5);
 		
 		/*
-		 *
+		 * read cds sensing value every 200msec 
 		 */
 		if ((k%10) == 0)
 		{
