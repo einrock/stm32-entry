@@ -5,9 +5,9 @@
 void cds_init()
 {
 	/*
-	 * enable clock for adc-1
+	 * enable clock for adc-1, and port-A
 	 */
-	RCC->APB2ENR = RCC->APB2ENR | (0x1 << 9);
+	RCC->APB2ENR = RCC->APB2ENR | (0x1 << 9) | (0x1 << 2);
 	
 	/*
 	 * analog input enable for pa1
@@ -20,12 +20,12 @@ void cds_init()
 	ADC1->SQR3 = 0x1;
 	
 	/*
-	 * sw start,  continuous conversion, adc on
+	 * sw trigger event, continuous conversion, adc on
 	 */
 	ADC1->CR2 = ADC1->CR2 | (0x7 << 17) | (0x1 << 1) | (0x1 << 0);
 	
 	/*
-	 * sw start,  continuous conversion, adc on
+	 * start conversion, trigger conversion
 	 */
 	ADC1->CR2 = ADC1->CR2 | (0x1 << 22) | (0x1 << 20);
 }
