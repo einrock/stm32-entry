@@ -21,7 +21,7 @@ void exti_init()
 	/*
 	 * enable irq6, irq7
 	 */
-	*(unsigned int *)0xE000E100 = *(unsigned int *)0xE000E100 | (0x1 << 7) | (0x1 << 6); 
+	*(unsigned int *)0xE000E100 = (0x1 << 7) | (0x1 << 6); 
 
 	/*
 	 * interrupt enable for user key (pb0, pb1)
