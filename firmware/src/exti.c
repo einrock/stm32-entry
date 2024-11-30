@@ -1,8 +1,8 @@
 #include "stm32f10x.h"
 #include "exti.h"
 
-#ifndef configMAX_SYSCALL_INTERRUPT_PRIORITY
-	#define configMAX_SYSCALL_INTERRUPT_PRIORITY (0xbf)
+#ifndef configKERNEL_INTERRUPT_PRIORITY
+	#define configKERNEL_INTERRUPT_PRIORITY (0xff)
 #endif
 
 void exti_init()
@@ -15,8 +15,8 @@ void exti_init()
 	/*
 	 * priority of irq6, irq7
 	 */
-	*(unsigned char *)0xE000E406 = configMAX_SYSCALL_INTERRUPT_PRIORITY; 
-	*(unsigned char *)0xE000E407 = configMAX_SYSCALL_INTERRUPT_PRIORITY; 
+	*(unsigned char *)0xE000E406 = configKERNEL_INTERRUPT_PRIORITY; 
+	*(unsigned char *)0xE000E407 = configKERNEL_INTERRUPT_PRIORITY; 
 
 	/*
 	 * enable irq6, irq7
